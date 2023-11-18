@@ -6,15 +6,31 @@ An app for learning ruby on rails.
 
 The repository houses a ruby-on-rails app designed to help learn about to build and deploy web applications.
 
+## System Requirements
+
+- Git
+- Docker
+
 ## Development
 
-This project is setup to use Docker for development. Assuming you already have Docker desktop installed. You should be able to run the following commands to get up
+This project is setup to use Docker for development. Assuming you already have Docker desktop installed you should be able to run the following commands to get up
 and running.
 
 ```
 docker compose build
 docker compose up
 ```
+
+To run an instance of the web service.
+
+```
+docker compose run web bash
+```
+
+
+### Developing on host machine
+
+If you would like to run the application without Docker you will need Ruby version 3.2.0 running locally and setup a Postgres Database and update the `database.yml` file with the corresponding values.
 
 ## Deployment
 
