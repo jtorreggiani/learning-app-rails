@@ -22,10 +22,16 @@ docker compose build
 docker compose up
 ```
 
-To run an instance of the web service.
+Run the web service container to pull up a shell.
 
 ```
 docker compose run web bash
+```
+
+Run rails commands from the console.
+
+```
+bin/rails g controller ExampleController index
 ```
 
 ### Developing on your host machine
