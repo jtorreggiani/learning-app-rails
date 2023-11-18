@@ -7,6 +7,8 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test "should get index" do
     get posts_url
+    assert_match @post.title, response.body
+    assert_match @post.content, response.body
     assert_response :success
   end
 
@@ -25,6 +27,8 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test "should show post" do
     get post_url(@post)
+    assert_match @post.title, response.body
+    assert_match @post.content, response.body
     assert_response :success
   end
 
