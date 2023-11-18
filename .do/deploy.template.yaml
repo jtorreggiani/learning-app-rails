@@ -1,0 +1,8 @@
+spec:
+  name: learning-app-rails
+  services:
+  - environment_slug: ruby-on-rails
+    git:
+      branch: main
+      repo_clone_url: https://github.com/jtorreggiani/learning-app-rails.git
+    name: learning-app-rails

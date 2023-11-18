@@ -1,0 +1,8 @@
+name: learning-app-rails
+services:
+- environment_slug: ruby-on-rails
+  github:
+    branch: main
+    deploy_on_push: true
+    repo: jtorreggiani/learning-app-rails
+  name: learning-app-rails
