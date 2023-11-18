@@ -6,22 +6,12 @@ An app for learning ruby on rails.
 
 The repository houses a ruby-on-rails app designed to help learn about to build and deploy web applications.
 
-# Using Docker to run the application
+# Development
 
-Build a Docker image.
-
-```
-docker build -t learning-app-rails .
-```
-
-Run start the container from the image.
+This project is setup to use Docker for development. Assuming you already have Docker desktop installed. You should be able to run the following commands to get up
+and running.
 
 ```
-docker run -p 3000:3000 learning-app-rails
-```
-
-Connect to the running container
-
-```
-docker exec -it [CONTAINER_ID] /bin/bash
+docker compose build
+docker compose up
 ```
