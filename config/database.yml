@@ -79,6 +79,4 @@ test:
 #
 production:
   <<: *default
-  database: learning_app_rails_production
-  username: learning_app_rails
-  password: <%= ENV["LEARNING_APP_RAILS_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
