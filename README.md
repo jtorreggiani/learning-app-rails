@@ -1,19 +1,20 @@
 # Learning app rails
 
-An app for learning ruby on rails.
+This repository an web application built with [Ruby on Rails](https://rubyonrails.org/) designed to help learn about the framework and best practices for web development.
 
-## About this repository
+## Technology Stack
 
-The repository houses a ruby-on-rails app designed to help learn about to build and deploy web applications.
+- [Git](https://git-scm.com/) for version control and collaboration
+- [Docker](https://www.docker.com/) for the development environment
+- [Ruby 3.2.0](https://www.ruby-lang.org/en/) for the core programming language
+- [Ruby on Rails](https://rubyonrails.org/) for the full stack development framework
+- [PostgreSQL](https://www.postgresql.org/) for the database
+- [TailwindCSS](https://tailwindcss.com/) for the CSS framework
+- [Digital Ocean App Platform](https://www.digitalocean.com/products/app-platform) for deploying to production
 
-## System Requirements
+## Development Environment
 
-- Git
-- Docker
-
-## Development
-
-This project is setup to use Docker for development. Assuming you already have Docker desktop installed you should be able to run the following commands to get up
+This project is setup to use Docker for local development. Assuming you already have [Docker desktop](https://www.docker.com/products/docker-desktop/) installed you should be able to run the following commands to get up
 and running.
 
 ```
@@ -27,8 +28,7 @@ To run an instance of the web service.
 docker compose run web bash
 ```
 
-
-### Developing on host machine
+### Developing on your host machine
 
 If you would like to run the application without Docker you will need Ruby version 3.2.0 running locally and setup a Postgres Database and update the `database.yml` file with the corresponding values.
 
@@ -40,3 +40,5 @@ This repository is setup to automatically deploy to Digital Ocean (DO) App platf
 
 - [ ] Add tests to CI
 - [ ] Add Ruby linters
+- [ ] Add Ruby automated documentation
+- [ ] Add cucumber for feature testing
