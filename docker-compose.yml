@@ -23,6 +23,7 @@ services:
       - db
     environment:
       DATABASE_URL: postgresql://user:password@db/myapp_development
+      DEVISE_SECRET_KEY: devise-secret-key
 
 volumes:
   postgres_data:
