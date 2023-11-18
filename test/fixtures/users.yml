@@ -5,6 +5,7 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
+  username: jsmith
   email: user@example.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   # Add other necessary fields according to your User model
