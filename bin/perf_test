@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+require 'net/http'
+require 'benchmark'
+require 'uri'
+require 'thread'
+
+# Configuration
+url = URI.parse('https://clownfish-app-bnwtz.ondigitalocean.app/posts')
+number_of_requests = 1000
+concurrent_users = 10
+response_times = []
+mutex = Mutex.new
+
+threads = (1..concurrent_users).map do
+  Thread.new do
+    (number_of_requests / concurrent_users).times do
+      response_time = Benchmark.realtime do
+        Net::HTTP.get_response(url)
+      end
+      mutex.synchronize { response_times << response_time }
+      puts "Request took #{response_time} seconds."
+    end
+  end
+end
+
+threads.each(&:join)
+
+average_response_time = response_times.sum / response_times.size
+puts "Average Response Time: #{average_response_time} seconds"

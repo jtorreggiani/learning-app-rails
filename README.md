@@ -70,6 +70,10 @@ This application follows all of the folder organization conventions for a Rails 
 
 This repository is setup to automatically deploy to Digital Ocean (DO) App platform when code is merged into the main branch. Do handles the heavy lifting for build the application. In the future, we will explore deploying this site to other platforms.
 
+# Media Storage
+
+Media uploaded to the app is stored in Digital Ocean Spaces.
+
 ## TODO
 
 - [ ] Add tests to CI
