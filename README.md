@@ -34,9 +34,37 @@ Run rails commands from the console.
 bin/rails g controller ExampleController index
 ```
 
-### Developing on your host machine
+**Developing on your host machine**
 
 If you would like to run the application without Docker you will need Ruby version 3.2.0 running locally and setup a Postgres Database and update the `database.yml` file with the corresponding values.
+
+# Directory Structure
+
+This application follows all of the folder organization conventions for a Rails application.
+
+```
+├── app
+├── bin
+├── config
+├── data
+├── db
+├── docs
+├── lib
+├── log
+├── public
+├── storage
+├── test
+├── tmp
+├── vendor
+├── config.ru
+├── Dockerfile
+├── docker-compose.yml
+├── Gemfile
+├── Gemfile.lock
+├── Procfile.dev
+├── README.md
+└── Rakefile
+```
 
 ## Deployment
 
