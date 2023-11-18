@@ -22,7 +22,7 @@ end
 # terminating a worker in development environments.
 worker_timeout 3600 if ENV.fetch("RAILS_ENV", "development") == "development"
 
-# Specifies the `port` that Puma will listen on to receive requests; default is 8080.
+# Specifies the `port` that Puma git will listen on to receive requests; default is 8080.
 port ENV.fetch("PORT") { 8080 }
 
 # Specifies the `environment` that Puma will run in.
