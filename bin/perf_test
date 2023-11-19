@@ -1,8 +1,9 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
+
 require 'net/http'
 require 'benchmark'
 require 'uri'
-require 'thread'
 
 # Configuration
 url = URI.parse('https://clownfish-app-bnwtz.ondigitalocean.app/posts')
