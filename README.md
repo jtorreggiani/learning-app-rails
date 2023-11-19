@@ -66,18 +66,32 @@ This application follows all of the folder organization conventions for a Rails 
 └── Rakefile
 ```
 
+## Environment Variables
+
+Each environment needs multiple variables to be set to be able to run correctly.
+
+```
+ACCESS_KEY_ID=
+SECRET_ACCESS_KEY=
+SECRET_KEY_BASE=
+DATABASE_URL=
+REDIS_URL=
+```
+
 ## Deployment
 
 This repository is setup to automatically deploy to Digital Ocean (DO) App platform when code is merged into the main branch. Do handles the heavy lifting for build the application. In the future, we will explore deploying this site to other platforms.
 
 # Media Storage
 
-Media uploaded to the app is stored in Digital Ocean Spaces.
+Media uploaded to the app is stored in Digital Ocean Spaces using ActiveStorage.
 
 ## TODO
 
-- [ ] Add tests to CI
-- [ ] Add Ruby linters
+- [X] Deploy application to Digital Ocean
+- [X] Deploy to Heroku
+- [X] Add tests to CI
+- [X] Add Ruby linters
 - [ ] Add Ruby automated documentation
 - [ ] Add cucumber for feature testing
 - [ ] Add Sentry for monitoring
