@@ -6,6 +6,7 @@ AllCops:
     - vendor/**/*.rb
     - gemfiles/vendor/bundle/**/*.rb
 
+# https://github.com/rubocop/rubocop/issues/9832
 inherit_mode:
   merge:
     - Exclude
