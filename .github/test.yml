@@ -1,0 +1,67 @@
+name: Rails CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:12
+        env:
+          POSTGRES_PASSWORD: password
+        ports: ['5432:5432']
+      redis:
+        image: redis
+        ports: ['6379:6379']
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.2.0 # Replace with your project's Ruby version
+
+      - name: Cache Gems
+        uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get install -yqq libpq-dev
+          gem install bundler
+          bundle config set path 'vendor/bundle'
+          bundle install
+
+      - name: Set up Database
+        env:
+          DATABASE_URL: postgresql://postgres:password@localhost:5432/myapp_test
+          REDIS_URL: redis://localhost:6379/1
+          RAILS_ENV: test
+        run: |
+          bundle exec rails db:prepare
+
+      - name: Run Tests
+        env:
+          DATABASE_URL: postgresql://postgres:password@localhost:5432/myapp_test
+          REDIS_URL: redis://localhost:6379/1
+          RAILS_ENV: test
+        run: |
+          bundle exec rails test
+
+      - name: Create Coverage Artifact
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: code-coverage
+          path: coverage/
