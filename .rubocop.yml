@@ -4,3 +4,8 @@ AllCops:
     - config/initializers/devise.rb
     - bin/bundle
     - vendor/**/*.rb
+    - gemfiles/vendor/bundle/**/*.rb
+
+inherit_mode:
+  merge:
+    - Exclude
