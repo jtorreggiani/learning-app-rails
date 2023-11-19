@@ -1,7 +1,7 @@
 <main class="flex flex-row min-h-screen justify-center items-center bg-gray-100 p-6">
   <div class="m-auto w-full max-w-lg p-8 bg-white shadow-md rounded">
     <h2 class="text-2xl font-semibold mb-6">
-      Edit <%= resource_name.to_s.humanize %>
+      Edit Profile
     </h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "space-y-4" }) do |f| %>
@@ -10,6 +10,11 @@
       <div class="field">
         <%= f.label :username, class: "block text-sm font-medium text-gray-700" %>
         <%= f.text_field :username, autofocus: true, class: "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :headline, class: "block text-sm font-medium text-gray-700" %>
+        <%= f.text_field :headline, autofocus: true, class: "w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm" %>
       </div>
 
       <div class="field">

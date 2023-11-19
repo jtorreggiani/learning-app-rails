@@ -16,6 +16,13 @@ services:
     ports:
       - "6379:6379"
 
+  selenium:
+    image: selenium/standalone-chrome:latest
+    volumes:
+      - /dev/shm:/dev/shm
+    ports:
+      - "9515:9515"
+
   web:
     build: .
     command: sh -c "bin/dev"
@@ -27,6 +34,7 @@ services:
     depends_on:
       - db
       - redis
+      - selenium
     env_file:
       - .env
     environment:
