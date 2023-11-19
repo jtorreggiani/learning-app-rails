@@ -27,6 +27,36 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to post_url(Post.last)
   end
 
+  test 'create via turbo stream' do
+    post posts_url(format: :turbo_stream), params: {
+      post: {
+        content: 'Content',
+        title: 'Title',
+      }
+    }
+    assert_response :success
+  end
+
+  test 'create error via turbo stream' do
+    post posts_url(format: :turbo_stream), params: {
+      post: {
+        content: 'Content',
+        title: nil,
+      }
+    }
+    assert_response :unprocessable_entity
+  end
+
+  test 'create via JSON' do
+    post posts_url(format: :json), params: {
+      post: {
+        content: 'Content',
+        title: 'Title',
+      }
+    }
+    assert_response :success
+  end
+
   test 'should show post' do
     get post_url(@post)
     assert_match @post.title, response.body
@@ -63,16 +93,6 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
         content: @post.content,
         name: @post.name,
         title: @post.title
-      }
-    }
-    assert_response :success
-  end
-
-  test 'should handle turbo stream' do
-    post posts_url(format: :turbo_stream), params: {
-      post: {
-        content: 'Content',
-        title: 'Title',
       }
     }
     assert_response :success

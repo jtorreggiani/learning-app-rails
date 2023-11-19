@@ -26,7 +26,7 @@ class PostsController < ApplicationController
     @post.user = current_user
 
     respond_to do |format|
-      if @post.save
+      if @post.save!
         successful_response(format)
       else
         failed_response(format)
