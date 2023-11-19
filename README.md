@@ -80,3 +80,4 @@ Media uploaded to the app is stored in Digital Ocean Spaces.
 - [ ] Add Ruby linters
 - [ ] Add Ruby automated documentation
 - [ ] Add cucumber for feature testing
+- [ ] Add Sentry for monitoring
