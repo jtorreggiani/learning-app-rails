@@ -1,4 +1,4 @@
-# Learning app rails
+# Learning Rails
 
 This repository an web application built with [Ruby on Rails](https://rubyonrails.org/) designed to help learn about the framework and best practices for web development.
 
