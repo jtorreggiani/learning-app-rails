@@ -44,6 +44,17 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to post_url(@post)
   end
 
+  test 'should update post via JSON' do
+    patch post_url(@post, format: :json), params: {
+      post: {
+        content: @post.content,
+        name: @post.name,
+        title: @post.title,
+      }
+    }
+    assert_response :success
+  end
+
   test 'should destroy post' do
     assert_difference('Post.count', -1) do
       delete post_url(@post)
