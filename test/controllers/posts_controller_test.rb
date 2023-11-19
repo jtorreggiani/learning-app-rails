@@ -49,7 +49,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       post: {
         content: @post.content,
         name: @post.name,
-        title: @post.title,
+        title: @post.title
       }
     }
     assert_response :success
