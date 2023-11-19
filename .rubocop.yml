@@ -3,3 +3,4 @@ AllCops:
     - db/schema.rb
     - config/initializers/devise.rb
     - bin/bundle
+    - vendor/**/*.rb
