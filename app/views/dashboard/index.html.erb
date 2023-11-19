@@ -9,6 +9,9 @@
         <h2 class="text-center text-xl font-bold mt-4">
           <%= @current_user.username %>
         </h2>
+        <h3>
+          <%= @current_user.headline %>
+        </h3>
         <%= link_to "Edit profile", edit_registration_path(@current_user), class: "block text-center text-blue-500 font-semibold mt-2" %>
         <!-- Additional user info here -->
 

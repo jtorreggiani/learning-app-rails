@@ -16,10 +16,11 @@ class DashboardControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'renders username' do
+  test 'renders user deatils' do
     sign_in users(:one)
     get dashboard_url
     assert_match 'jsmith', response.body
+    assert_match 'Software Engineer', response.body
   end
 
   test 'renders profile picture' do
