@@ -6,8 +6,12 @@
         <% if @current_user.profile_picture.attached? %>
           <%= image_tag @current_user.profile_picture, class: "w-32 h-32 rounded-full mx-auto" %>
         <% end %>
-        <h2 class="text-center text-xl font-bold mt-4"><%= @current_user.username %></h2>
+        <h2 class="text-center text-xl font-bold mt-4">
+          <%= @current_user.username %>
+        </h2>
+        <%= link_to "Edit profile", edit_registration_path(@current_user), class: "block text-center text-blue-500 font-semibold mt-2" %>
         <!-- Additional user info here -->
+
       </div>
     </div>
 
