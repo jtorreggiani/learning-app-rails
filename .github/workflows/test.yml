@@ -58,6 +58,9 @@ jobs:
           RAILS_ENV: test
         run: |
           bundle exec rails test
+      
+      - name: Run RuboCop
+        run: bundle exec rubocop
 
       - name: Create Coverage Artifact
         if: always()
