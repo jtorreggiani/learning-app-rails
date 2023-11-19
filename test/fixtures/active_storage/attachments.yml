@@ -1,0 +1,4 @@
+profile_picture_attachment:
+  name: profile_picture
+  record: one (User)
+  blob: profile_picture_blob

@@ -1,0 +1,2 @@
+profile_picture_blob: <%= ActiveStorage::FixtureSet.blob filename: "tree.jpeg", service_name: "test" %>
+

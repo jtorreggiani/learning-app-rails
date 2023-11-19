@@ -19,4 +19,14 @@ class DashboardControllerTest < ActionDispatch::IntegrationTest
     get dashboard_url
     assert_match "jsmith", response.body
   end
+
+  test "renders profile picture" do
+    sign_in users(:one)
+    get dashboard_url
+    assert_response :success
+
+    assert_select "img" do |elements|
+      assert elements.any? { |e| e['src'].include?('tree.jpeg') }
+    end
+  end
 end

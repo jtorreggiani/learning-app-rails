@@ -31,7 +31,9 @@ class PostsController < ApplicationController
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @post.errors, status: :unprocessable_entity }
-        format.turbo_stream { render turbo_stream: turbo_stream.replace(@post, partial: "posts/form", locals: { post: @post }) }
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.replace(@post, partial: "posts/form", locals: { post: @post })
+        end
       end
     end
   end
