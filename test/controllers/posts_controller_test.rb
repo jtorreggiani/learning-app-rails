@@ -44,6 +44,19 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to post_url(@post)
   end
 
+  test 'should redirect to edit for invalid post' do
+    patch post_url(@post), params: {
+      post: {
+        content: @post.content,
+        name: @post.name,
+        title: nil,
+      },
+    }
+    assert_response :unprocessable_entity
+    assert_match 'Title can&#39;t be blank', response.body
+    assert_match 'Editing post', response.body
+  end
+
   test 'should update post via JSON' do
     patch post_url(@post, format: :json), params: {
       post: {
@@ -53,6 +66,28 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       }
     }
     assert_response :success
+  end
+
+  test 'should handle turbo stream' do
+    post posts_url(format: :turbo_stream), params: {
+      post: {
+        content: 'Content',
+        title: 'Title',
+      }
+    }
+    assert_response :success
+  end
+
+  test 'should handle errors via JSON' do
+    patch post_url(@post, format: :json), params: {
+      post: {
+        content: @post.content,
+        name: @post.name,
+        title: nil,
+      }
+    }
+    assert_response :unprocessable_entity
+    assert_match 'can\'t be blank', JSON.parse(response.body)['title'][0]
   end
 
   test 'should destroy post' do
