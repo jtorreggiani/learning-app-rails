@@ -31,7 +31,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     post posts_url(format: :turbo_stream), params: {
       post: {
         content: 'Content',
-        title: 'Title',
+        title: 'Title'
       }
     }
     assert_response :success
@@ -41,7 +41,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     post posts_url(format: :turbo_stream), params: {
       post: {
         content: 'Content',
-        title: nil,
+        title: nil
       }
     }
     assert_response :unprocessable_entity
@@ -51,7 +51,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     post posts_url(format: :json), params: {
       post: {
         content: 'Content',
-        title: 'Title',
+        title: 'Title'
       }
     }
     assert_response :success
@@ -79,8 +79,8 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       post: {
         content: @post.content,
         name: @post.name,
-        title: nil,
-      },
+        title: nil
+      }
     }
     assert_response :unprocessable_entity
     assert_match 'Title can&#39;t be blank', response.body
@@ -103,7 +103,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       post: {
         content: @post.content,
         name: @post.name,
-        title: nil,
+        title: nil
       }
     }
     assert_response :unprocessable_entity
