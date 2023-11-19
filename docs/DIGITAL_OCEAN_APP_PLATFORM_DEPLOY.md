@@ -1,7 +1,24 @@
 # Digital Ocean App Platform Deploy
 
-## Steps to setting up your first app
+Install Digital Ocean CLI (MAC)
 
-1. Sign up for a Digital Ocean Account
-2. Click the create app button
+```
+brew install doctl
+```
+
+Create an auth context
+
+```
+doctl auth init --context learning-app-rails
+```
+
+Switch context
+
+```
+doctl auth switch --context learning-app-
+rails
+```
+
+doctl auth switch --context learning-app-
+rails
 

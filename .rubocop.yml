@@ -1,10 +1,17 @@
 AllCops:
   Excludes:
     - db/schema.rb
+    - db/migrate/*.rb
     - config/initializers/devise.rb
     - bin/bundle
     - vendor/**/*.rb
     - gemfiles/vendor/bundle/**/*.rb
+  
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
 
 # https://github.com/rubocop/rubocop/issues/9832
 inherit_mode:
