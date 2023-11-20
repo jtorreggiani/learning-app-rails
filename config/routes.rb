@@ -2,6 +2,8 @@
 
 # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
+  resources :users, only: %i[index]
+  get 'profile/:id', to: 'users#profile', as: :profile
   resources :posts do
     resources :reactions, only: %i[index create]
   end
