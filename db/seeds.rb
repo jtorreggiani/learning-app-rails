@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 # db/seeds.rb
 
 require 'faker'
 
 # Constants for reaction types
-REACTION_TYPES = ['thumbs_up', 'thumbs_down', 'heart', 'clap']
+REACTION_TYPES = %w[thumbs_up thumbs_down heart clap].freeze
 
 User.destroy_all
 Post.destroy_all
@@ -13,12 +15,11 @@ User.create!(
   username: 'admin',
   email: 'admin@learning-app-rails.com',
   password: 'password123',
-  password_confirmation: 'password123',
+  password_confirmation: 'password123'
 )
 
-
 # Create 10 users
-1.times do
+10.times do
   user = User.new(
     username: Faker::Internet.username,
     email: Faker::Internet.email,
@@ -26,7 +27,8 @@ User.create!(
     password_confirmation: 'password123' # Required if you have enabled confirmable module in Devise
     # Add other necessary user fields here
   )
-  user.skip_confirmation! if user.respond_to?(:skip_confirmation!) # Skip confirmation if you have enabled confirmable module in Devise
+  # Skip confirmation if you have enabled confirmable module in Devise
+  user.skip_confirmation! if user.respond_to?(:skip_confirmation!)
   user.save!
 end
 
@@ -43,10 +45,10 @@ User.all.each do |user|
       reaction_type = REACTION_TYPES.sample
       post.reactions.create!(
         user: other_user,
-        reaction_type: reaction_type
+        reaction_type:
       )
     end
   end
 end
 
-puts "Database seeded successfully!"
+puts 'Database seeded successfully!'
