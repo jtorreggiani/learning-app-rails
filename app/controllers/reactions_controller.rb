@@ -12,11 +12,7 @@ class ReactionsController < ApplicationController
       handle_failed_reaction
     end
   rescue ArgumentError => e
-    respond_to do |format|
-      format.turbo_stream do
-        render turbo_stream: turbo_stream.replace(@reaction, partial: 'reactions/reactions', locals: { post: @post })
-      end
-    end
+    handle_failed_reaction
   end
 
   private
