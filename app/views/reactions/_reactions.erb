@@ -1,0 +1,8 @@
+<div id="<%= dom_id(post, :reactions) %>" class="reactions" style="display: flex; align-items: center; gap: 15px;">
+  <% Reaction.reaction_types.keys.each do |reaction_type| %>
+    <%= form_with url: post_reactions_path(post), method: :post, data: { turbo_frame: dom_id(post, :reactions) } do |form| %>
+      <%= form.hidden_field :reaction_type, value: reaction_type %>
+      <%= form.submit "#{post.reactions.where(reaction_type: reaction_type).count} #{reaction_emoji(reaction_type)}", style: "background: none; border: none; cursor: pointer; display: flex; align-items: center; gap: 5px;" %>
+    <% end %>
+  <% end %>
+</div>

@@ -2,7 +2,10 @@
 
 # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
-  resources :posts
+  resources :posts do
+    resources :reactions, only: %i[index create]
+  end
+
   get 'dashboard', to: 'dashboard#index'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
