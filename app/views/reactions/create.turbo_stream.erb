@@ -1,0 +1,5 @@
+<turbo-stream target="<%= dom_id(@post, :reactions) %>" action="replace">
+  <template>
+    <%= render partial: 'reactions/reactions', locals: { post: @post } %>
+  </template>
+</turbo-stream>
