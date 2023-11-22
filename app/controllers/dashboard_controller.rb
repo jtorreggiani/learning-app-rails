@@ -5,7 +5,7 @@ class DashboardController < ApplicationController
 
   def index
     @current_user = current_user
-    @posts = Post.limit(10).order(created_at: :desc)
+    @posts = Post.limit(10).order(created_at: :desc).includes(:user, :reactions)
     @post = Post.new
   end
 end
