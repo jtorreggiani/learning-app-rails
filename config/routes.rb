@@ -6,9 +6,6 @@ Rails.application.routes.draw do
   get 'profile/:id', to: 'users#profile', as: :profile
   resources :posts do
     resources :reactions, only: %i[index create]
-    collection do
-      post :index
-    end
   end
 
   get 'dashboard', to: 'dashboard#index'

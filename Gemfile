@@ -88,4 +88,4 @@ end
 
 gem 'faker'
 
-gem "pagy", "~> 6.2"
+gem 'pagy', '~> 6.2'
