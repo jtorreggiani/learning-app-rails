@@ -8,7 +8,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get index' do
-    get posts_url
+    get posts_url(format: :turbo_stream)
     assert_match @post.title, response.body
     assert_match @post.content, response.body
     assert_response :success

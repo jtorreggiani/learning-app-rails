@@ -27,6 +27,5 @@ class ReactionsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert_match(/turbo-stream/, @response.body)
-    # You can also assert specific contents in the turbo stream response if needed
   end
 end

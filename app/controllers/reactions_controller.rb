@@ -29,6 +29,7 @@ class ReactionsController < ApplicationController
     respond_to do |format|
       format.turbo_stream
       format.html { redirect_to @post }
+      format.json { render :show, status: :created, location: @post }
     end
   end
 
@@ -37,6 +38,8 @@ class ReactionsController < ApplicationController
       format.turbo_stream do
         render turbo_stream: turbo_stream.replace(@reaction, partial: 'reactions/reactions', locals: { post: @post })
       end
+      format.html { redirect_to @post }
+      format.json { render json: @reaction.errors, status: :unprocessable_entity }
     end
   end
 

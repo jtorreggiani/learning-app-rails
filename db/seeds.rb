@@ -19,36 +19,27 @@ User.create!(
 )
 
 # Create 10 users
-10.times do
+100.times do
   user = User.new(
     username: Faker::Internet.username,
     email: Faker::Internet.email,
     password: 'password123', # Use a more secure password in a real application
     password_confirmation: 'password123' # Required if you have enabled confirmable module in Devise
-    # Add other necessary user fields here
   )
+  puts "Created user: #{user.username} - #{user.email}"
   # Skip confirmation if you have enabled confirmable module in Devise
   user.skip_confirmation! if user.respond_to?(:skip_confirmation!)
   user.save!
-end
 
-# For each user, create 100 posts
-User.all.each do |user|
-  20.times do
-    post = user.posts.create!(
-      title: Faker::Lorem.sentence(word_count: 3),
-      content: Faker::Lorem.paragraph(sentence_count: 5)
-    )
-
-    # For each post, create reactions from other users
-    User.where.not(id: user.id).each do |other_user|
-      reaction_type = REACTION_TYPES.sample
-      post.reactions.create!(
-        user: other_user,
-        reaction_type:
-      )
-    end
-  end
+  post = user.posts.create!(
+    title: Faker::Lorem.sentence(word_count: 3),
+    content: Faker::Lorem.paragraph(sentence_count: 5)
+  )
+  puts "Created post: #{post.title} - #{post.content}"
+  post.reactions.create!(
+    user: User.all.sample,
+    reaction_type: 'thumbs_up'
+  )
 end
 
 puts 'Database seeded successfully!'

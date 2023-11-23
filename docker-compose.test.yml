@@ -32,7 +32,6 @@ services:
     environment:
       DATABASE_URL: postgresql://user:password@db/myapp_test
       REDIS_URL: redis://redis:6379/1
-    platform: linux/arm64/v8
 
 volumes:
   postgres_data:
