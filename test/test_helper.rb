@@ -19,14 +19,6 @@ module ActiveSupport
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
 
-    before :each do
-      DatabaseCleaner.start
-    end
-    
-    after :each do
-      DatabaseCleaner.clean
-    end
-
     # Add more helper methods to be used by all tests here...
   end
 end
