@@ -38,7 +38,7 @@ User.create!(
   puts "Created post: #{post.title} - #{post.content}"
   post.reactions.create!(
     user: User.all.sample,
-    reaction_type: 'thumbs_up',
+    reaction_type: 'thumbs_up'
   )
 end
 
