@@ -11,7 +11,7 @@ class ReactionsController < ApplicationController
     else
       handle_failed_reaction
     end
-  rescue ArgumentError
+  rescue ArgumentError => e
     handle_failed_reaction
   end
 

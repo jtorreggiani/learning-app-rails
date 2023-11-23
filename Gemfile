@@ -84,6 +84,8 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'simplecov', require: false
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
 end
 
 gem 'faker'
