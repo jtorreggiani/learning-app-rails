@@ -1,1 +1,1 @@
-docker compose run web bash -d --rm
+docker compose run --rm web bash
