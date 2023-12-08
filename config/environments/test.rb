@@ -8,6 +8,10 @@ require 'active_support/core_ext/integer/time'
 # and recreated between test runs. Don't rely on the data there!
 
 Rails.application.configure do
+  # Configure 'rails notes' to inspect Cucumber files
+  config.annotations.register_directories('features')
+  config.annotations.register_extensions('feature') { |tag| /#\s*(#{tag}):?\s*(.*)$/ }
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # While tests run files are not watched, reloading is not necessary.
@@ -18,6 +22,8 @@ Rails.application.configure do
   # recommended that you enable it in continuous integration systems to ensure eager
   # loading is working properly before deploying your code.
   config.eager_load = ENV['CI'].present?
+
+  config.assets.css_compressor = nil
 
   # Configure public file server for tests with Cache-Control for performance.
   config.public_file_server.enabled = true

@@ -32,6 +32,8 @@ services:
     environment:
       DATABASE_URL: postgresql://user:password@db/myapp_test
       REDIS_URL: redis://redis:6379/1
+      RAILS_ENV: test
+      CUCUMBER_PUBLISH_QUIET: true
 
 volumes:
   postgres_data:
