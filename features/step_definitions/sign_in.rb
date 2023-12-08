@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Given('I am a registered user') do
   $registered_user = User.create!(email: 'user2@example.com', password: 'password', password_confirmation: 'password')
 end
@@ -37,10 +39,10 @@ Then('I should see an invalid login message') do
 end
 
 Given('I am logged in') do
-  $registered_user = User.create!(username: 'Joe', email: 'user2@example.com', password: 'password', password_confirmation: 'password')
+  $registered_user = User.create!(username: 'Joe', email: 'user2@example.com', password: 'password',
+                                  password_confirmation: 'password')
   visit new_user_session_path
   fill_in 'Email', with: $registered_user.email
   fill_in 'Password', with: 'password'
   click_button 'Log in'
 end
-  
