@@ -1,18 +1,19 @@
 # frozen_string_literal: true
 
 class ReactionsController < ApplicationController
-  before_action :set_post
+  before_action :set_post, only: %i[create]
+  before_action :set_reaction, only: %i[create]
 
+  # Creates a new reaction for a post
+  # POST /posts/:post_id/reactions
+  # POST /posts/:post_id/reactions.json
+  # POST /posts/:post_id/reactions.turbo_stream
   def create
-    @reaction = build_reaction
-
     if @reaction.save
       handle_successful_reaction
     else
       handle_failed_reaction
     end
-  rescue ArgumentError
-    handle_failed_reaction
   end
 
   private
@@ -21,15 +22,21 @@ class ReactionsController < ApplicationController
     @post = Post.find(params[:post_id])
   end
 
-  def build_reaction
-    @post.reactions.new(reaction_params.merge(user: current_user))
+  def set_reaction
+    @reaction = @post.reactions.new
+    @reaction.assign_attributes(
+      reaction_type: reaction_params[:reaction_type],
+      user: current_user,
+    )
+  rescue ArgumentError
+    @reaction.errors.add(:reaction_type, 'is not a valid reaction type')
   end
 
   def handle_successful_reaction
     respond_to do |format|
       format.turbo_stream
       format.html { redirect_to @post }
-      format.json { render :show, status: :created, location: @post }
+      format.json { render json: @reaction, status: :created }
     end
   end
 
