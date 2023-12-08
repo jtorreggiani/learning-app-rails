@@ -44,7 +44,8 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
         title: nil
       }
     }
-    assert_response :unprocessable_entity
+    assert_response :success
+    assert_match 'Title can&#39;t be blank', response.body
   end
 
   test 'create via JSON' do
@@ -53,7 +54,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
         content: 'Content',
         title: 'Title'
       }
-    }
+    }, as: :json
     assert_response :success
   end
 
@@ -116,5 +117,16 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to posts_url
+  end
+
+  test 'handles creation failure' do
+    post posts_url, params: {
+      post: {
+        content: 'Content',
+        title: nil
+      }, as: :json
+    }
+    assert_response :unprocessable_entity
+    assert_match 'Title can&#39;t be blank', response.body
   end
 end

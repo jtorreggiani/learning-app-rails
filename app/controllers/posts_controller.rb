@@ -35,7 +35,7 @@ class PostsController < ApplicationController
     @post.user = current_user
 
     respond_to do |format|
-      if @post.save!
+      if @post.save
         successful_response(format)
       else
         failed_response(format)
@@ -91,9 +91,6 @@ class PostsController < ApplicationController
   end
 
   def failed_response(format)
-    format.html { render :new, status: :unprocessable_entity }
-    format.json { render json: @post.errors, status: :unprocessable_entity }
-
     format.turbo_stream do
       render turbo_stream: turbo_stream.replace(
         @post,
@@ -101,5 +98,7 @@ class PostsController < ApplicationController
         locals: { post: @post }
       )
     end
+    format.html { render :new, status: :unprocessable_entity }
+    format.json { render json: @post.errors, status: :unprocessable_entity }
   end
 end
