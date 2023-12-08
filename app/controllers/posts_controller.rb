@@ -3,7 +3,12 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
 
-  # GET /posts or /posts.json
+  # Renders list of posts
+  # GET /posts
+  # GET /posts.json
+  # GET /posts.turbo_stream
+  # @pagy [Pagy] pagination object
+  # @posts [Array<Post>] all posts
   def index
     @pagy, @posts = pagy_countless(Post.order(created_at: :desc), items: 10)
 

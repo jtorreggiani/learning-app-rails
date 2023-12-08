@@ -6,7 +6,10 @@
 
 # Ignore bundler config.
 /.bundle
+.DS_Store
+doc/
 
+.yardoc/
 data/
 
 # Ignore all environment files (except templates).

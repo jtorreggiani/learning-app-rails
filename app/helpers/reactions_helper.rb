@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Used to render reactions in views
 module ReactionsHelper
   def reaction_emoji(reaction_type)
     case reaction_type
