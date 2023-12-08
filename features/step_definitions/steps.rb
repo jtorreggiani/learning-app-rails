@@ -37,5 +37,6 @@ Then('I should be redirected to the sign in page') do
 end
 
 Then('I should see my dashboard') do
-  assert_match @user.username
+  assert_match $registered_user.username, 'Joe'
+  assert page.has_content?('News and Promotions')
 end
