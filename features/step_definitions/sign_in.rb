@@ -35,3 +35,12 @@ end
 Then('I should see an invalid login message') do
   assert page.has_content?('Invalid Email or password.')
 end
+
+# Given('I am logged in') do
+#   @registered_user = User.create!(email: 'user2@example.com', password: 'password', password_confirmation: 'password')
+#   visit new_user_session_path
+#   fill_in 'Email', with: @registered_user.email
+#   fill_in 'Password', with: @registered_user.password
+#   click_button 'Log in'
+# end
+  

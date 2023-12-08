@@ -28,14 +28,14 @@ end
 #   sign_in @user
 # end
 
-# When('I visit the dashboard page') do
-#   visit dashboard_path
-# end
+When('I visit the dashboard page') do
+  visit dashboard_path
+end
 
-# Then('I should be redirected to the sign in page') do
-#   assert_equal current_path, new_user_session_path
-# end
+Then('I should be redirected to the sign in page') do
+  assert_equal current_path, new_user_session_path
+end
 
-# Then('I should see my dashboard') do
-#   assert_match @user.username
-# end
+Then('I should see my dashboard') do
+  assert_match @user.username
+end
