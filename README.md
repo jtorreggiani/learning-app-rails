@@ -65,6 +65,35 @@ This application follows all of the folder organization conventions for a Rails 
 ├── README.md
 └── Rakefile
 ```
+## Testing
+
+This project uses [Ruby-on-Rails built-in testing utilities](https://guides.rubyonrails.org/testing.html) with all of the tests located in the `/test` directory.
+
+Use the `docker-compose.test.yml` to spin up a container dedicated to running the tests.
+
+```Shell
+docker compose -f docker-compose.test.yml run web bash
+rails test
+```
+
+Running the tests you should see the output.
+
+```
+Rebuilding...
+
+Done in 289ms.
+required simplecov
+Running 26 tests in a single process (parallelization threshold is 50)
+Run options: --seed 36466
+
+# Running:
+..........................
+Finished in 1.009284s, 25.7608 runs/s, 60.4389 assertions/s.
+26 runs, 61 assertions, 0 failures, 0 errors, 0 skips
+Coverage report generated for Minitest to /app/coverage. 107 / 171 LOC (62.57%) covered.
+```
+
+
 
 ## Environment Variables
 
