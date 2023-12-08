@@ -19,8 +19,7 @@ class PostTest < ActiveSupport::TestCase
   end
 
   test 'should save post with user' do
-    user = users(:one)
-    post = Post.new(title: 'Title', user: user)
+    post = Post.new(title: 'Title', user: users(:one))
     assert post.save, 'Saved the post with a title'
   end
 

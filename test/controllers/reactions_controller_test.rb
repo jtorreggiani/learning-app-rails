@@ -14,7 +14,7 @@ class ReactionsControllerTest < ActionDispatch::IntegrationTest
       post post_reactions_path(@post), params: { reaction_type: 'thumbs_up' }, as: :turbo_stream
     end
     assert_response :success
-    assert_match /turbo-stream/, @response.body
+    assert_match(/turbo-stream/, @response.body)
   end
 
   test 'should handle failed reaction creation with turbo stream' do
@@ -45,7 +45,7 @@ class ReactionsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_response :created
   end
-  
+
   test 'should handle failed reaction creation with json' do
     assert_no_difference 'Reaction.count' do
       post post_reactions_path(@post), params: { reaction_type: 'dislike' }, as: :json
@@ -53,4 +53,3 @@ class ReactionsControllerTest < ActionDispatch::IntegrationTest
     assert_response :unprocessable_entity
   end
 end
-

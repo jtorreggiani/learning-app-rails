@@ -26,7 +26,7 @@ class ReactionsController < ApplicationController
     @reaction = @post.reactions.new
     @reaction.assign_attributes(
       reaction_type: reaction_params[:reaction_type],
-      user: current_user,
+      user: current_user
     )
   rescue ArgumentError
     @reaction.errors.add(:reaction_type, 'is not a valid reaction type')
