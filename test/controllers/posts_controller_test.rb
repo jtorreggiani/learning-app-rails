@@ -39,22 +39,14 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test 'create error via turbo stream' do
     post posts_url(format: :turbo_stream), params: {
-      post: {
-        content: 'Content',
-        title: nil
-      }
+      post: { content: 'Content', title: nil }
     }
     assert_response :success
     assert_match 'Title can&#39;t be blank', response.body
   end
 
   test 'create via JSON' do
-    post posts_url(format: :json), params: {
-      post: {
-        content: 'Content',
-        title: 'Title'
-      }
-    }, as: :json
+    post posts_url(format: :json), params: { post: { content: 'Content', title: 'Title' } }, as: :json
     assert_response :success
   end
 
@@ -101,31 +93,19 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should handle errors via JSON' do
     patch post_url(@post, format: :json), params: {
-      post: {
-        content: @post.content,
-        name: @post.name,
-        title: nil
-      }
+      post: { content: @post.content, name: @post.name, title: nil }
     }
     assert_response :unprocessable_entity
     assert_match 'can\'t be blank', JSON.parse(response.body)['title'][0]
   end
 
   test 'should destroy post' do
-    assert_difference('Post.count', -1) do
-      delete post_url(@post)
-    end
-
+    assert_difference('Post.count', -1) { delete post_url(@post) }
     assert_redirected_to posts_url
   end
 
   test 'handles creation failure' do
-    post posts_url, params: {
-      post: {
-        content: 'Content',
-        title: nil
-      }, as: :json
-    }
+    post posts_url, params: { post: { content: 'Content', title: nil } }
     assert_response :unprocessable_entity
     assert_match 'Title can&#39;t be blank', response.body
   end
