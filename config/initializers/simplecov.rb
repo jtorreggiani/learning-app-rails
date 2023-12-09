@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-if Rails.env.test?
+if Rails.env.test? && ENV['COVERAGE']
   require 'simplecov'
   SimpleCov.start 'rails' do
     enable_coverage :branch
