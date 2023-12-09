@@ -7,4 +7,9 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     get users_url
     assert_response :success
   end
+
+  test 'should get profile' do
+    get profile_path(users(:one))
+    assert_response :success
+  end
 end

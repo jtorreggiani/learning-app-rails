@@ -14,10 +14,4 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     @post = Post.new
   end
-
-  private
-
-  def user_params
-    params.require(:user).permit(:username, :headline, :avatar)
-  end
 end
