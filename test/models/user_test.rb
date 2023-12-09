@@ -50,7 +50,7 @@ class UserTest < ActiveSupport::TestCase
 
   test 'user has many post reactions' do
     post = posts(:one)
-    reaction = @user.reactions.create!(post: post, reaction_type: 'thumbs_up')
+    reaction = @user.reactions.create!(post:, reaction_type: 'thumbs_up')
     assert_equal reaction, @user.reactions.last
   end
 

@@ -86,7 +86,7 @@ class RegistrationsControllerTest < ActionDispatch::IntegrationTest
     patch user_registration_url, params: {
       user: {
         username: 'test',
-        current_password: 'password',
+        current_password: 'password'
       }
     }
     assert_redirected_to root_url
@@ -97,7 +97,7 @@ class RegistrationsControllerTest < ActionDispatch::IntegrationTest
     patch user_registration_url, params: {
       user: {
         username: 'dope!',
-        current_password: '',
+        current_password: ''
       }
     }
     assert_response :unprocessable_entity
@@ -118,7 +118,7 @@ class RegistrationsControllerTest < ActionDispatch::IntegrationTest
         username: 'test',
         email: 'test@test.com',
         password: 'password',
-        confirmation_password: 'password',
+        confirmation_password: 'password'
       }
     }
     assert_redirected_to root_url
