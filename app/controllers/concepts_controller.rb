@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ConceptsController < ApplicationController
-  before_action :set_concept, only: %i[ show edit update destroy ]
+  before_action :set_concept, only: %i[show edit update destroy]
 
   # GET /concepts or /concepts.json
   def index
@@ -7,8 +9,7 @@ class ConceptsController < ApplicationController
   end
 
   # GET /concepts/1 or /concepts/1.json
-  def show
-  end
+  def show; end
 
   # GET /concepts/new
   def new
@@ -16,8 +17,7 @@ class ConceptsController < ApplicationController
   end
 
   # GET /concepts/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /concepts or /concepts.json
   def create
@@ -25,7 +25,7 @@ class ConceptsController < ApplicationController
 
     respond_to do |format|
       if @concept.save
-        format.html { redirect_to concept_url(@concept), notice: "Concept was successfully created." }
+        format.html { redirect_to concept_url(@concept), notice: 'Concept was successfully created.' }
         format.json { render :show, status: :created, location: @concept }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class ConceptsController < ApplicationController
   def update
     respond_to do |format|
       if @concept.update(concept_params)
-        format.html { redirect_to concept_url(@concept), notice: "Concept was successfully updated." }
+        format.html { redirect_to concept_url(@concept), notice: 'Concept was successfully updated.' }
         format.json { render :show, status: :ok, location: @concept }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +52,20 @@ class ConceptsController < ApplicationController
     @concept.destroy!
 
     respond_to do |format|
-      format.html { redirect_to concepts_url, notice: "Concept was successfully destroyed." }
+      format.html { redirect_to concepts_url, notice: 'Concept was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_concept
-      @concept = Concept.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def concept_params
-      params.require(:concept).permit(:name, :description)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_concept
+    @concept = Concept.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def concept_params
+    params.require(:concept).permit(:name, :description)
+  end
 end
