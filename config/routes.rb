@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
+# == Route Map
+#
+
 # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
+  resources :concepts
   resources :users, only: %i[index]
   get 'profile/:id', to: 'users#profile', as: :profile
   resources :posts do
