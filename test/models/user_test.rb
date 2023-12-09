@@ -47,4 +47,23 @@ class UserTest < ActiveSupport::TestCase
       @user.posts.destroy_all
     end
   end
+
+  test 'user has many post reactions' do
+    post = posts(:one)
+    reaction = @user.reactions.create!(post:, reaction_type: 'thumbs_up')
+    assert_equal reaction, @user.reactions.last
+  end
+
+  test 'user can add profile picture' do
+    @user.profile_picture.attach(
+      io: File.open(Rails.root.join('test', 'fixtures', 'files', 'tree.jpeg')),
+      filename: 'tree.jpeg',
+      content_type: 'image/png'
+    )
+    assert @user.profile_picture.attached?
+  end
+
+  test 'has a test method' do
+    assert_equal 'test', @user.test_method
+  end
 end
