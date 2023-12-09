@@ -14,7 +14,7 @@ require 'rails/test_help'
 module ActiveSupport
   class TestCase
     # Run tests in parallel with specified workers
-    parallelize(workers: 1)
+    parallelize(workers: :number_of_processors)
 
     # if ENV['RAILS_ENV'] == 'test'
     #   parallelize_setup do |worker|
