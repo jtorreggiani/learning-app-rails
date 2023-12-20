@@ -54,7 +54,7 @@ gem 'image_processing', '~> 1.2'
 gem 'devise', '~> 4.9'
 
 # Add Tailwind CSS
-gem 'tailwindcss-rails', '~> 2.0'
+gem 'tailwindcss-rails', '~> 2.1'
 
 # Add rubocop for static code analysis.
 gem 'rubocop'
