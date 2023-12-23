@@ -34,6 +34,27 @@ Run rails commands from the console.
 bin/rails g controller ExampleController index
 ```
 
+Review running containers.
+
+```
+docker ps -a
+```
+
+You should see output that looks something like this. Note that the `ps` command will output other columns not included in this snippet.
+
+```
+CONTAINER ID   IMAGE                    COMMAND                  NAMES
+ed3abd23aaae   learning-app-rails-web   "sh -c bin/dev"          learning-app-rails-web-1
+2fca87f252c8   redis                    "docker-entrypoint.s…"   learning-app-rails-redis-1
+0778d0d288fc   postgres                 "docker-entrypoint.s…"   learning-app-rails-db-1
+```
+
+Connect to a running instance of `web`
+
+```
+docker exec -it [CONTAINER_ID] bash
+```
+
 **Developing on your host machine**
 
 If you would like to run the application without Docker you will need Ruby version 3.2.0 running locally and setup a Postgres Database and update the `database.yml` file with the corresponding values.
